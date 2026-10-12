@@ -24,15 +24,6 @@ I hope this year treats you as kindly as you've treated all of us. May your wish
 
 Enjoy your day. You deserve every bit of it.`;
 
-const REASONS = [
-  { emoji: "📣", label: "The Announcer", back: "You keep us updated even when half of us are asleep in the GC. Thank you for never giving up on us." },
-  { emoji: "🧭", label: "The Compass", back: "When the class doesn't know what to do next, somehow you already have a plan." },
-  { emoji: "🧘‍♀️", label: "Patience: Legendary", back: "Answering the same question five times a day and still staying kind? That's a talent." },
-  { emoji: "🤝", label: "Always There", back: "You show up for the class, even on days you probably just wanted to rest." },
-  { emoji: "🌟", label: "Leads by Example", back: "You don't just tell us what to do — you do it first. That's why people listen." },
-  { emoji: "💛", label: "Makes Us a Team", back: "Because of you, we're not just a list of names on a roster — we're a class." },
-];
-
 /* ---------- helpers ---------- */
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -389,29 +380,6 @@ function stopMic() {
   if (micStream) micStream.getTracks().forEach((t) => t.stop());
   micBtn.hidden = true;
 }
-
-/* =========================================================
-   Reason cards
-   ========================================================= */
-const cardsWrap = $("#cards");
-REASONS.forEach((r) => {
-  const b = document.createElement("button");
-  b.className = "card";
-  b.setAttribute("aria-label", `${r.label}: tap to reveal`);
-  b.innerHTML = `
-    <span class="card-inner">
-      <span class="card-face card-front"><span class="emoji"></span><span class="label"></span></span>
-      <span class="card-face card-back"></span>
-    </span>`;
-  $(".emoji", b).textContent = r.emoji;
-  $(".label", b).textContent = r.label;
-  $(".card-back", b).textContent = r.back;
-  b.addEventListener("click", (ev) => {
-    b.classList.toggle("flipped");
-    if (b.classList.contains("flipped")) confetti(ev.clientX || W / 2, ev.clientY || H / 2, 25, 0.5);
-  });
-  cardsWrap.appendChild(b);
-});
 
 /* =========================================================
    Letter typewriter
