@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Birthday, Mayor! 🎂</title>
+  <meta name="description" content="A little birthday surprise for our class mayor.">
+  <meta property="og:title" content="Happy Birthday, Mayor! 🎂">
+  <meta property="og:description" content="A little birthday surprise for our class mayor. Tap to open 🎁">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600;800&family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="stars" aria-hidden="true"></div>
+
+  <!-- ========== INTRO: the gift ========== -->
+  <section id="intro" class="screen active">
+    <p class="intro-kicker">psst… this one's for you</p>
+    <button id="gift" class="gift" aria-label="Open your birthday gift">
+      <span class="gift-lid"><span class="bow"></span></span>
+      <span class="gift-box"></span>
+    </button>
+    <p class="intro-hint">tap the gift to open 🎀</p>
+  </section>
+
+  <!-- ========== MAIN ========== -->
+  <main id="main" class="screen" hidden>
+    <div class="balloons" aria-hidden="true"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+      <p class="hero-kicker">Today we celebrate</p>
+      <h1 class="hero-title">
+        <span class="line">Happy Birthday,</span>
+        <span class="line name" id="heroName">Mayor!</span>
+      </h1>
+      <p class="hero-sub">to the one who keeps our class together 💛</p>
+      <a href="#cake" class="scroll-cue" aria-label="Scroll down">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- Cake -->
+    <section id="cake" class="panel reveal">
+      <h2>Make a wish first 🌠</h2>
+      <p class="muted">Close your eyes, wish for something nice, then tap each candle to blow it out.</p>
+
+      <div class="cake-wrap">
+        <div class="cake">
+          <div class="candles" id="candles">
+            <button class="candle" aria-label="Blow candle 1"><span class="flame"></span></button>
+            <button class="candle" aria-label="Blow candle 2"><span class="flame"></span></button>
+            <button class="candle" aria-label="Blow candle 3"><span class="flame"></span></button>
+          </div>
+          <div class="tier top"><span class="drip"></span></div>
+          <div class="tier mid"><span class="drip"></span></div>
+          <div class="plate"></div>
+        </div>
+      </div>
+
+      <div class="cake-actions">
+        <button id="micBtn" class="btn ghost">🎤 Or blow into your mic</button>
+      </div>
+      <p id="wishMsg" class="wish-msg" aria-live="polite"></p>
+    </section>
+
+    <!-- Proclamation -->
+    <section class="panel reveal">
+      <div class="proclamation">
+        <div class="seal" aria-hidden="true"><span>★</span></div>
+        <p class="pro-small">Republic of Our Classroom</p>
+        <h2 class="pro-title">Official Proclamation</h2>
+        <p class="pro-small">declaring a very special day</p>
+        <div class="pro-body">
+          <p><b>WHEREAS,</b> our Mayor has patiently reminded us of deadlines we <i>definitely</i> would have forgotten;</p>
+          <p><b>WHEREAS,</b> she has stood in front of the class, spoken up for us, and carried responsibilities most of us never even noticed;</p>
+          <p><b>WHEREAS,</b> she managed all of this while still being a student with her own load to carry;</p>
+          <p><b>NOW, THEREFORE,</b> by the power vested in the students of this class, today is hereby declared</p>
+          <p class="pro-decree"><span id="proName">Our Mayor</span>'s Day</p>
+          <p>— a day for cake, rest, zero announcements, and all the good things she deserves.</p>
+        </div>
+        <div class="pro-sign">
+          <div>
+            <span class="sig">The Class</span>
+            <span class="sig-line">Signed, with appreciation</span>
+          </div>
+          <div>
+            <span class="sig" id="proDate"></span>
+            <span class="sig-line">Date of effectivity</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reasons -->
+    <section class="panel reveal">
+      <h2>Things we appreciate about you</h2>
+      <p class="muted">Tap a card to flip it ✨</p>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <!-- Letter -->
+    <section class="panel reveal">
+      <div class="letter">
+        <h2 class="letter-title">A little note</h2>
+        <div id="letterText" class="letter-text" aria-live="polite"></div>
+        <p class="letter-sign" id="letterSign"></p>
+      </div>
+    </section>
+
+    <!-- Finale -->
+    <section class="panel finale reveal">
+      <h2 class="finale-title">Happy Birthday! 🎉</h2>
+      <p class="muted">Tap anywhere on the sky for fireworks.</p>
+      <div class="finale-actions">
+        <button id="fireworksBtn" class="btn">🎆 Light up the sky</button>
+        <button id="replayBtn" class="btn ghost">↺ Watch again</button>
+      </div>
+    </section>
+
+    <footer class="foot">made with 💛 for our Mayor</footer>
+  </main>
+
+  <button id="musicBtn" class="music-btn" aria-label="Toggle music" hidden>♪</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
