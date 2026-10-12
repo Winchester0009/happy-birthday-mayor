@@ -2,4 +2,4 @@
 
 A little birthday surprise page.
 
-Personalise with URL parameters: `?name=Anna&from=Juan`
+Optional URL parameters: `?from=YourName` (also `name`, `full`)

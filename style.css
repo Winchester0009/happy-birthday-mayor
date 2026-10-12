@@ -479,13 +479,45 @@ button { font: inherit; color: inherit; cursor: pointer; border: 0; background: 
 .letter-sign.show { opacity: 1; }
 
 /* ---------- finale ---------- */
-.finale { padding-top: 40px; }
+.finale { padding: 60px 16px 20px; }
 .finale-title {
-  font-family: "Dancing Script", cursive;
-  font-size: clamp(2.6rem, 11vw, 4.5rem) !important;
-  color: var(--gold);
+  display: flex; flex-wrap: wrap; justify-content: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 10vw, 5rem) !important;
+  letter-spacing: .04em;
+  line-height: 1.1;
 }
-.finale-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 22px; }
+.finale-title span {
+  display: inline-block;
+  background: linear-gradient(180deg, #fff3d1, var(--gold) 55%, var(--gold-2));
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 14px rgba(247, 200, 115, .45));
+  animation: bounce 2.4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * .08s);
+}
+.finale-title span:nth-child(odd) {
+  background-image: linear-gradient(180deg, #ffe1ee, var(--pink) 55%, var(--rose));
+  filter: drop-shadow(0 0 14px rgba(255, 92, 147, .45));
+}
+.finale-title .gap { flex-basis: 100%; height: 0; }
+@media (min-width: 720px) { .finale-title .gap { flex-basis: auto; width: .4em; } }
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-14px) rotate(-4deg); }
+}
+.finale-name {
+  margin-top: 6px;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  font-size: clamp(3rem, 14vw, 6rem);
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 0 18px rgba(255, 143, 184, .8), 0 0 40px rgba(183, 104, 255, .6);
+}
+.finale-wish { margin-top: 10px; color: var(--text); font-size: clamp(1rem, 3.6vw, 1.2rem); }
+.finale-hint { margin-top: 18px; color: var(--muted); font-size: .85rem; opacity: .75; }
 
 .foot { text-align: center; color: var(--muted); font-size: .85rem; opacity: .7; position: relative; z-index: 1; }
 

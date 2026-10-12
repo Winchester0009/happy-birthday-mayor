@@ -4,16 +4,19 @@
    ========================================================= */
 const params = new URLSearchParams(location.search);
 const CONFIG = {
-  name: (params.get("name") || "").trim().slice(0, 40),
+  name: (params.get("name") || "Kishh").trim().slice(0, 40),
+  fullName: (params.get("full") || "Krishia Jane").trim().slice(0, 60),
   from: (params.get("from") || "").trim().slice(0, 40),
 };
 
-const mayorName = CONFIG.name ? `Mayor ${CONFIG.name}` : "Mayor";
+const mayorName = `Mayor ${CONFIG.name}`;
 const signature = CONFIG.from ? `— ${CONFIG.from}` : "— your classmate";
 
-const LETTER = `Happy birthday, ${CONFIG.name || "Mayor"}! 🎉
+const LETTER = `Happy birthday, ${CONFIG.name}! 🎉
 
-I know we don't get to talk all the time, but I want you to know that what you do for our class doesn't go unnoticed. Being mayor isn't easy — the reminders, the announcements, the group chats nobody replies to (sorry 😅) — and you still handle all of it with patience.
+I know we don't get to talk all the time, but I want you to know that what you do for our class doesn't go unnoticed.
+
+And honestly? I feel you. I was a class mayor once too, so I know it's harder than it looks — the reminders, the announcements, the group chats nobody replies to (sorry 😅), being the one everyone asks, and still having your own deadlines on top of it all. It can get tiring, and not everyone sees that. But I do, and you're doing a great job.
 
 Thank you for leading us without making it feel like a burden, and for being someone the whole class can count on.
 
@@ -40,7 +43,11 @@ const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 /* ---------- fill in personal bits ---------- */
 document.title = `Happy Birthday, ${mayorName}! 🎂`;
 $("#heroName").textContent = `${mayorName}!`;
-$("#proName").textContent = mayorName;
+$("#proName").textContent = `Mayor ${CONFIG.fullName}`;
+$("#finaleName").textContent = CONFIG.name;
+$("#finaleTitle").innerHTML = [..."HAPPY BIRTHDAY"]
+  .map((ch, i) => ch === " " ? '<span class="gap"></span>' : `<span style="--i:${i}">${ch}</span>`)
+  .join("");
 $("#proDate").textContent = new Date().toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" });
 $("#letterSign").textContent = signature;
 
@@ -308,6 +315,7 @@ function observeReveals() {
       if (!e.isIntersecting) return;
       e.target.classList.add("in");
       if (e.target.querySelector(".letter")) typeLetter();
+      if (e.target.classList.contains("finale")) finaleShow();
       io.unobserve(e.target);
     });
   }, { threshold: 0.2 });
@@ -440,15 +448,12 @@ function typeLetter() {
 /* =========================================================
    Finale
    ========================================================= */
-$("#fireworksBtn").addEventListener("click", () => {
-  for (let i = 0; i < 7; i++) setTimeout(() => firework(), i * 280);
-  setTimeout(() => confettiRain(100), 1800);
-});
-
-$("#replayBtn").addEventListener("click", () => {
-  scrollTo({ top: 0, behavior: "smooth" });
-  setTimeout(() => { confettiRain(140); releaseBalloons(10); }, 600);
-});
+function finaleShow() {
+  setTimeout(() => {
+    for (let i = 0; i < 8; i++) setTimeout(() => firework(), i * 300);
+    setTimeout(() => confettiRain(120), 2000);
+  }, 1200);
+}
 
 // tap empty sky for a firework
 document.addEventListener("click", (e) => {
