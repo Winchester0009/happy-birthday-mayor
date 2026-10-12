@@ -39,7 +39,7 @@ $("#finaleName").textContent = CONFIG.name;
 $("#finaleTitle").innerHTML = [..."HAPPY BIRTHDAY"]
   .map((ch, i) => ch === " " ? '<span class="gap"></span>' : `<span style="--i:${i}">${ch}</span>`)
   .join("");
-$("#proDate").textContent = new Date().toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" });
+$("#proDate").textContent = "October 13, 2026";
 $("#letterSign").textContent = signature;
 
 /* ---------- stars ---------- */
